@@ -34,6 +34,7 @@ def get_image_name(image_path):
     image_name = image_path.split('/')[-1].split('.')[0]
     return image_name
 
+
 def get_number_of_cells(image_name):
     '''
     Returns the number of cells for the current image.
@@ -41,6 +42,7 @@ def get_number_of_cells(image_name):
     pattern = '\w+_\w+\d+_C(\d+)_'
     nb_cells = int(re.findall(pattern, image_name)[0])
     return nb_cells
+
 
 def split_data(image_paths, target_paths):
     '''
@@ -55,6 +57,7 @@ def split_data(image_paths, target_paths):
         stratify=nb_cells)
 
     return im_path_train, im_path_val, tar_path_train, tar_path_val
+
 
 def download_data(root='./'):
     '''
@@ -107,6 +110,3 @@ def download_data(root='./'):
             if name.startswith('BBBC005_v1_ground_truth/'):
                 zip_f.extract(name, os.path.join(root, folder))
     os.unlink(file_path)
-
-
-
